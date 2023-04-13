@@ -1,5 +1,6 @@
 package com.manzar.cinemarestapp.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +27,11 @@ public class Hall {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Column(nullable = false)
   private String name;
-  private int capacity;
+  @Column(name = "rows_count")
+  private int rowsCount;
+  @Column(name = "seats_number_in_row")
+  private int seatsNumberInRow;
 
 }

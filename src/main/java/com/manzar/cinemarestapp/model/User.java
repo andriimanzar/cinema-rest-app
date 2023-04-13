@@ -1,11 +1,16 @@
 package com.manzar.cinemarestapp.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,7 +36,19 @@ public class User {
   private String lastName;
   private String email;
   private String phoneNumber;
+  @Enumerated(EnumType.STRING)
   private UserRole userRole;
-  private List<Ticket> ticketsInCart;
-  private List<Ticket> previousTickets;
+  @OneToMany(mappedBy = "user")
+  @Setter(AccessLevel.PRIVATE)
+  private List<Ticket> tickets = new ArrayList<>();
+
+  public void addTicket(Ticket ticket) {
+    tickets.add(ticket);
+    ticket.setUser(this);
+  }
+
+  public void removeTicket(Ticket ticket) {
+    tickets.remove(ticket);
+    ticket.setUser(null);
+  }
 }
