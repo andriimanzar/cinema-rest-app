@@ -27,20 +27,16 @@ public class Movie {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @Column(nullable = false)
   private String title;
-  @Column(nullable = false)
   private String genre;
-  @Column(nullable = false)
   private Long duration;
-  @Column(nullable = false)
   private String director;
-  @Column(nullable = false)
   private int releaseYear;
   private String country;
-  @Column(nullable = false)
   private String description;
+  @Column(name = "poster_url")
   private String posterUrl;
+  @Column(name = "trailer_url")
   private String trailerUrl;
 
 }

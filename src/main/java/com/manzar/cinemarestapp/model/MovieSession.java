@@ -1,7 +1,7 @@
 package com.manzar.cinemarestapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -73,11 +73,10 @@ public class MovieSession {
   @OneToOne
   @JoinColumn(name = "hall_id")
   private Hall hall;
-  @Column(nullable = false)
   private LocalDateTime sessionStartTime;
-  @Column(nullable = false)
   private BigDecimal ticketPrice;
   @Setter(AccessLevel.PRIVATE)
+  @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(name = "movie_session_id")
   private List<Seat> seats = new ArrayList<>();

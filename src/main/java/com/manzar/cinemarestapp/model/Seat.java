@@ -1,6 +1,5 @@
 package com.manzar.cinemarestapp.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,10 +35,7 @@ public class Seat {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @Column(nullable = false)
   private int rowNumber;
-  @Column(nullable = false)
   private int seatNumber;
-  @Column(nullable = false)
   private boolean isReserved;
 }
