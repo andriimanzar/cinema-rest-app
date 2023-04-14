@@ -1,5 +1,6 @@
 package com.manzar.cinemarestapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -38,6 +39,7 @@ public class User {
   private String phoneNumber;
   @Enumerated(EnumType.STRING)
   private UserRole userRole;
+  @JsonIgnore
   @OneToMany(mappedBy = "user")
   @Setter(AccessLevel.PRIVATE)
   private List<Ticket> tickets = new ArrayList<>();
